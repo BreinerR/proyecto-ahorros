@@ -20,13 +20,22 @@ const { data, error } = await supabase
 if (!error) setAhorros(data);
 };
 const addAhorro = async () => {
-if (!usuario.trim() || !monto.trim()) return;
-const { error } = await supabase.from('users').insert([{ usuario, monto: parseFloat(monto)
-}]);
-if (!error) {
-setMonto('');
-fetchAhorros();
-}
+  if (!usuario.trim() || !monto.trim()) {
+    alert('Por favor ingresa usuario y monto');
+    return;
+  }
+
+  const { data, error } = await supabase
+    .from('users')
+    .insert([{ usuario: usuario.trim(), monto: parseFloat(monto) }]);
+
+  if (error) {
+    console.log('Error de Supabase:', error.message);
+    alert('Error al guardar: ' + error.message);
+  } else {
+    setMonto('');
+    fetchAhorros();
+  }
 };
 const total = ahorros.reduce((sum, item) => sum + parseFloat(item.monto), 0);
 return (
