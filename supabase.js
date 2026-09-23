@@ -1,10 +1,10 @@
 import 'react-native-url-polyfill/auto';
 import { createClient } from '@supabase/supabase-js';
 
-// Reemplaza TU_PROJECT_URL con la URL de tu proyecto en Supabase (está un poco más arriba en esa misma página)
-const SUPABASE_URL = 'https://zduuszobtsusrvmicbvh.supabase.co/rest/v1/';
+// URL sin /rest/v1/
+const SUPABASE_URL = 'https://zduuszobtsusrvmicbvh.supabase.co';
 
-// Pega aquí la clave que acabas de copiar
-const SUPABASE_ANON_KEY = 'sb_secret_5FJJt1ixyX0-I-lA8e5GXw_rPnk8LXE';
+// Debe ser tu Publishable Key (empieza por sb_publishable_...)
+const SUPABASE_ANON_KEY = 'sb_publishable_gLsYSSQJSvCmuLd6ZPTf3A_iekja';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
